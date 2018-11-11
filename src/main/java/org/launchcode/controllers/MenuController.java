@@ -86,6 +86,6 @@ public class MenuController {
         Menu theMenu = menuDao.findOne(form.getMenuId());
         theMenu.addItem(cheese);
         menuDao.save(theMenu);
-        return "redirect:menu/view/" + theMenu.getId();
+        return "redirect:view/" + theMenu.getId();
     }
 }
