@@ -39,8 +39,8 @@ public class MenuController {
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String add(Model model){
-        model.addAttribute("title", "Menu");
         model.addAttribute(new Menu());
+        model.addAttribute("title", "Menu");
 
         return "menu/add";
     }
@@ -49,7 +49,7 @@ public class MenuController {
     public String add(Model model, @ModelAttribute @Valid Menu menu, Errors errors) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Menu");
+            model.addAttribute("title", "Menu");
             return "menu/add";
         }
         menuDao.save(menu);
@@ -57,7 +57,7 @@ public class MenuController {
     }
 
     @RequestMapping(value="view/{id}", method = RequestMethod.GET)
-    public String viewMenu(Model model, @PathVariable @NotNull int id){
+    public String viewMenu(Model model, @PathVariable int id){
         Menu menu = menuDao.findOne(id);
         model.addAttribute("menu", menu);
         model.addAttribute("id", menu.getId());
@@ -76,7 +76,7 @@ public class MenuController {
         return "menu/add-item";
     }
 
-    @RequestMapping(value="add-item/{id}", method = RequestMethod.POST)
+    @RequestMapping(value="add-item", method = RequestMethod.POST)
     public String addItem(Model model, @ModelAttribute @Valid AddMenuItemForm form, Errors errors){
         if (errors.hasErrors()) {
             model.addAttribute("form", form);

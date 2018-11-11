@@ -10,11 +10,26 @@
 
         <p th:unless="${menu.cheeses} and ${menu.cheeses.size()}">No cheese! :(</p>
 
+        <table class = "table">
+            <tr>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul th:each="cheese : ${menu.cheeses}">
+                        <span th:text="${cheese.name}"></span>
+                    </ul>
+                </td>
+                <td>
+                    <ul th:each="cheese : ${menu.cheeses}">
+                        <span th:text="${cheese.description}"></span>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <a th:href="'/menu/add-item/' + ${menu.id}">Add Cheese</a>
+        </p>
 
-        <ul th:each="cheese : ${menu.cheeses}" th:text="${cheese.name}"></ul>
-        <p></p>
-        <nav>
-            <p><a th:href="'/menu/add-item/' + ${menu.id}">Add Cheese</a></p>
-        </nav>
     </body>
 </html>

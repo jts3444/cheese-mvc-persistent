@@ -10,11 +10,16 @@
 
         <p th:unless="${menus} and ${menus.size()}">No menus! :(</p>
 
+        <table class = "table">
+            <tr>
+                <th>Name</th>
+            </tr>
 
-        <ul th:each="menu : ${menus}"
-            th:text="${menu.name}">
-            <a th:href="'/menu/view/'+${menu.id}" th:text="${menu.name}"></a>
-        </ul>
+            <tr th:each="menu : ${menus}">
+            <td th:text="${menu.name}"></td>
+            <td><a th:href="'/menu/view/'+${menu.id}" th:text="${menu.name}"></a></td>
+            </tr>
+        </table>
         <p></p>
         <nav>
             <a href="/menu/add">Add Menu</a>
